@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bang diem cua em</title>
+    <style>
+        .semester_1, .semester_2{
+            display: flex;
+        }
+        input{
+            width: 100px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="semester_1">
+        <h5>Semester 1</h5>
+        <input type="number" id="ses_1">
+    </div>
+    <div class="semester_2">
+        <h5>Semester 2</h5>
+        <input type="number" id="ses_2">
+    </div>
+    <label for="years">Year:</label>
+    <select name="years" id="years">
+        <option value="year_1">1</option>
+        <option value="year_2">2</option>
+        <option value="year_3">3</option>
+        <option value="year_4">4</option>
+    </select>
+    <br>
+    <label for="sum">Summeries</label>
+    <input type="" id="kq">
+    <p id="thanh_tich"></p>
+    <button onclick="Sum()">OK</button>
+    <button onclick="cencal()">Cancel</button>
+    <script>
+        function Sum(){
+            var ses_1 = parseFloat(document.getElementById('ses_1').value);
+            var ses_2= parseFloat(document.getElementById('ses_2').value);
+            var years = (document.getElementById('years').value);
+            var sum;
+            var thanh_tich;
+            if (years == "year_1") {
+                sum = (ses_1 + ses_2) / 2;
+            } else if (years == "year_2") {
+                sum = (ses_1 + (ses_2 * 2)) / 3;
+             } else if(years == "year_3"){
+                sum = (ses_1 + (ses_2 * 3)) / 4;
+             }else if(years== "year_4"){
+                sum = (ses_1 + (ses_2 * 4)) / 5;
+             }
+             if (sum>=8){
+                    thanh_tich = "Gioi"
+                }else if(sum>7){
+                    thanh_tich ="kha";
+                }else{
+                    thanh_tich = "tb or yeu";
+                }
+            document.getElementById('kq').value= sum;
+            document.getElementById('thanh_tich').style.color= "red"
+            document.getElementById('thanh_tich').innerHTML= thanh_tich;
+        }
+        function cencal() {
+            document.getElementById('ses_1').value = '';
+            document.getElementById('ses_2').value = '';
+            document.getElementById('kq').value = ''; // Changed from innerHTML to value
+            document.getElementById('years').selectedIndex = 0; // Resetting the dropdown to the first option
+            document.getElementById('thanh_tich').innerHTML = ''; // Clear the achievement message
+        }
+    </script>
+</body>
+</html>
